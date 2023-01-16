@@ -36,6 +36,6 @@ fun Btn_global(text : String,color : Color = Purple500, colorText : Color = Colo
 @Composable
 fun Btn_globalPreview() {
     PadsouTheme {
-        Btn_global("Test")
+        Btn_global("J'aime Lucas")
     }
 }

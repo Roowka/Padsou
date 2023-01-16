@@ -14,6 +14,11 @@ class Utils {
         }
 
         @Composable
+        fun PxToSp(pixels: Float) : Float{
+            return pixels / getContext().resources.displayMetrics.scaledDensity;
+        }
+
+        @Composable
         fun getContext(): Context {
             return LocalContext.current
         }
