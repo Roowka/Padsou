@@ -9,6 +9,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
@@ -34,9 +36,9 @@ fun OnBoardingMain(){
     val pagerState = rememberPagerState()
     val listOfPost = listOf<PostModel>(
         PostModel("Abonnement 1 an","2 mois offert",R.drawable.ic_launcher_background,R.drawable.ic_launcher_background),
-        PostModel("Le grand barathon","2 mois offert",R.drawable.ic_launcher_background,R.drawable.ic_launcher_background),
-        PostModel("Abonnement 1 an","2 mois offert",R.drawable.ic_launcher_background,R.drawable.ic_launcher_background),
-        PostModel("Abonnement 1 an","2 mois offert",R.drawable.ic_launcher_background,R.drawable.ic_launcher_background),
+        PostModel("Le grand barathon","1 verre acheté = 1 offert",R.drawable.ic_launcher_background,R.drawable.ic_launcher_background),
+        PostModel("Garantie appart","Pas besoin de garants",R.drawable.ic_launcher_background,R.drawable.ic_launcher_background),
+        PostModel("Giga MAXI Tacos","5€99, dépêche toi !",R.drawable.ic_launcher_background,R.drawable.ic_launcher_background),
     )
 
     Column(modifier = Modifier
@@ -62,9 +64,12 @@ fun OnBoardingMain(){
                     .background(Color.White, shape = RoundedCornerShape(25.dp))
                     .width(250.dp)
                     .height(250.dp)
-                    .padding(horizontal = Utils.PxToDp(pixels = 66f).dp)
+                    .padding( horizontal = Utils.PxToDp(pixels = 40f).dp)
                 ) {
-                    LazyVerticalGrid(cells = GridCells.Fixed(2)){
+                    LazyVerticalGrid(cells = GridCells.Fixed(2),
+                        horizontalArrangement = Arrangement.spacedBy(10.dp),
+                        verticalArrangement = Arrangement.SpaceEvenly
+                        , modifier = Modifier.fillMaxHeight().fillMaxHeight()){
                         items(listOfPost){
                             post -> OnBoardingCardPost(post = post)
                         }
