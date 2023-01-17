@@ -1,7 +1,9 @@
 package com.example.padsou.ui.components.onboarding
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -30,7 +32,7 @@ fun OnBoardingCardPost(post : PostModel){
             .width(104.dp)
             .height(104.dp)) {
         Column() {
-            Box(){
+            Box(modifier = Modifier.fillMaxWidth()){
                 Image(painter = painterResource(id =post.postPicture),
                     contentDescription = "test",
                     modifier = Modifier
@@ -42,7 +44,11 @@ fun OnBoardingCardPost(post : PostModel){
 
                 Image(painter = painterResource(id = post.logo),
                     contentDescription = "logo",
-                    modifier = Modifier.width(20.dp).height(20.dp).clip(CircleShape).padding(32.dp).offset(y = 52.dp),
+                    modifier = Modifier.size(20.dp)
+                        .offset(x = 37.dp,y = 48.dp)
+                        .border(BorderStroke(2.5f.dp,Color.White), CircleShape)
+                        .clip(CircleShape),
+                    contentScale = ContentScale.Fit,
                 )
             }
 

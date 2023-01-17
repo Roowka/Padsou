@@ -9,8 +9,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
@@ -35,10 +33,10 @@ import com.example.padsou.models.PostModel
 fun OnBoardingMain(){
     val pagerState = rememberPagerState()
     val listOfPost = listOf<PostModel>(
-        PostModel("Abonnement 1 an","2 mois offert",R.drawable.ic_launcher_background,R.drawable.ic_launcher_background),
-        PostModel("Le grand barathon","1 verre acheté = 1 offert",R.drawable.ic_launcher_background,R.drawable.ic_launcher_background),
-        PostModel("Garantie appart","Pas besoin de garants",R.drawable.ic_launcher_background,R.drawable.ic_launcher_background),
-        PostModel("Giga MAXI Tacos","5€99, dépêche toi !",R.drawable.ic_launcher_background,R.drawable.ic_launcher_background),
+        PostModel("Abonnement 1 an","2 mois offert",R.drawable.basic_post,R.drawable.basic_logo),
+        PostModel("Le grand barathon","1 verre acheté = 1 offert",R.drawable.bar_post,R.drawable.bar_logo),
+        PostModel("Garantie appart","Pas besoin de garants",R.drawable.chambre_post,R.drawable.chambre_logo),
+        PostModel("Giga MAXI Tacos","5€99, dépêche toi !",R.drawable.tacos_post,R.drawable.tacos_logo),
     )
 
     Column(modifier = Modifier
