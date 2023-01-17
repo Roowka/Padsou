@@ -1,7 +1,9 @@
 package com.example.padsou.ui.components.onboarding
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -23,10 +25,10 @@ import com.example.padsou.ui.theme.Rose1
 @Composable
 fun OnBoardingHeader(){
     Column (modifier = Modifier
-        .background(Purple1)
-        .padding(top = Utils.PxToDp(pixels = 98f).dp)
+        .fillMaxWidth()
         .padding(horizontal = Utils.PxToDp(pixels = 66f).dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
     )
     {
         Text(text = "Pas de sous?".uppercase(),
