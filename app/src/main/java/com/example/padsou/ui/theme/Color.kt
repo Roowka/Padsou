@@ -11,4 +11,5 @@ val Purple1 = Color(0xFF5F67EA)
 val BlackTitle = Color(0xFF393145)
 val WhiteText = Color(0xFFA6A6A6)
 val GreyText = Color(0xFF747685)
+val GreyBackground = Color(0xFFEBE7FF)
 
