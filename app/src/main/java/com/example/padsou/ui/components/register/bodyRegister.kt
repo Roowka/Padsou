@@ -2,6 +2,7 @@ package com.example.padsou.ui.components.register
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Text
@@ -28,7 +29,7 @@ import com.example.padsou.ui.theme.WhiteText
 fun bodyRegister(){
     Column( modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
 
-        Text(text = "En t’inscrivant, tu acceptes les Conditions générales d’utilisation de Padsou", color = GreyText, fontFamily = FontFamily(Font(R.font.inter_regular)))
+        Text(text = "En t’inscrivant, tu acceptes les Conditions générales d’utilisation de Padsou", color = GreyText, fontFamily = FontFamily(Font(R.font.inter_regular)), modifier = Modifier.padding(10.dp))
 
         PadsouTheme {
             Btn_global("Se connecter")
@@ -43,7 +44,7 @@ fun bodyRegister(){
 )
 
 @Composable
-fun bidyRegisterPreview(){
+fun bodyRegisterPreview(){
     PadsouTheme {
         bodyRegister()
     }
