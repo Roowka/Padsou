@@ -10,3 +10,5 @@ val Teal200 = Color(0xFF03DAC5)
 val Rose1 = Color(0xFFF9709C)
 val Purple1 = Color(0xFF5F67EA)
 val InactiveGrey = Color(0xFF9FA4F2)
+val WhiteText = Color(0xFFA6A6A6)
+
