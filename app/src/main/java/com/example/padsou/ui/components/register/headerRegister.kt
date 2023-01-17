@@ -25,7 +25,7 @@ fun headerRegister(colorText : Color = BlackTitle ){
     Column( modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
         Text(text = "Bienvenue \uD83D\uDE0E", color = colorText, fontWeight = FontWeight.Bold, fontFamily = FontFamily(Font(R.font.integralcf_regular)))
 
-        Text(text = "Inscris-toi pour avoir les meilleurs plans étudiants !", color = colorText, fontFamily = FontFamily(Font(R.font.integralcf_regular)), textAlign = TextAlign.Center, modifier =  Modifier.width(200.dp))
+        Text(text = "Inscris-toi pour avoir les meilleurs plans étudiants !", color = colorText, fontFamily = FontFamily(Font(R.font.inter_regular)), textAlign = TextAlign.Center, modifier =  Modifier.width(200.dp))
     }
 
 }
