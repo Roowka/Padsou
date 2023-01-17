@@ -19,12 +19,9 @@ import com.example.padsou.ui.theme.*
 @Composable
 fun footerLogin(){
     Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-         Row(modifier = Modifier.width(300.dp)) {
-           Btn_global(text = "Se connecter")
-         }
-        Row(modifier = Modifier.padding(top = 200.dp, bottom = 30.dp)){
-            Text(text = "Pas encore inscrit ?", fontFamily = FontFamily(Font(R.font.inter_regular)), fontWeight = FontWeight.Bold, modifier = Modifier.padding(end = 2.dp), fontSize = 12.sp)
-            Text(text = "Allez viens !", color = Purple500, fontWeight = FontWeight.Bold, modifier = Modifier.padding(start = 2.dp), fontSize = 12.sp)
+        Row(modifier = Modifier.padding(top = 30.dp, bottom = 30.dp)){
+            Text(text = "Pas encore inscrit ?", fontFamily = FontFamily(Font(R.font.inter_regular)), modifier = Modifier.padding(end = 2.dp), fontSize = 12.sp)
+            Text(text = "Allez viens !", color = Purple1, modifier = Modifier.padding(start = 2.dp), fontSize = 12.sp)
         }
     }
 }
