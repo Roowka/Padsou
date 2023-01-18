@@ -4,10 +4,13 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Button
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 import com.example.padsou.ui.components.onboarding.OnBoardingFooter
 import com.example.padsou.ui.components.onboarding.OnBoardingHeader
 import com.example.padsou.ui.components.onboarding.OnBoardingMain
@@ -15,7 +18,7 @@ import com.example.padsou.ui.theme.PadsouTheme
 import com.example.padsou.ui.theme.Purple1
 
 @Composable
-fun OnBoarding() {
+fun OnBoarding(navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -24,14 +27,6 @@ fun OnBoarding() {
     ) {
         OnBoardingHeader()
         OnBoardingMain()
-        OnBoardingFooter()
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun OnBoardingPreview() {
-    PadsouTheme {
-        OnBoarding()
+        OnBoardingFooter(navController)
     }
 }
