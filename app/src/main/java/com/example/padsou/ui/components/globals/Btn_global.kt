@@ -1,5 +1,6 @@
 package com.example.padsou.ui.components.globals
 
+import android.content.DialogInterface.OnClickListener
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -20,9 +21,9 @@ import com.example.padsou.ui.theme.Purple500
 
 
 @Composable
-fun Btn_global(text : String,color : Color = Purple500, colorText : Color = Color.White){
+fun Btn_global(text : String,click: (()->Unit)? = null,color : Color = Purple500, colorText : Color = Color.White){
     Button(
-        onClick = { /*TODO*/ },
+        onClick = { click },
         colors = ButtonDefaults.buttonColors(backgroundColor = color),
         contentPadding = PaddingValues(vertical = 20.dp),
         modifier = Modifier.fillMaxWidth(),
