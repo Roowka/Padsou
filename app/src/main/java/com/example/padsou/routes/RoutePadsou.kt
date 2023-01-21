@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.padsou.pages.TestPage
+import com.example.padsou.pages.home.Home
 import com.example.padsou.pages.onboarding.OnBoarding
 
 @Composable
@@ -14,5 +15,6 @@ fun RoutePadsou(navController : NavHostController){
         //Ajouter le navController dans son composant de page
         composable("onboarding") { OnBoarding(navController)}
         composable("register") { TestPage(navController) }
+        composable("home") { Home()}
     }
 }
