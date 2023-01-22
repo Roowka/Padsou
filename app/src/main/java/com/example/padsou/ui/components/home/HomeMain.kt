@@ -48,7 +48,7 @@ fun HomeMain() {
                 Text(
                     text = "Courses",
                     color = colorBox1,
-                    modifier = Modifier.padding(top = 10.dp),
+                    modifier = Modifier.padding(top = 10.dp).align(Alignment.CenterHorizontally),
                     textAlign = TextAlign.Center,
                     fontSize = 10.sp,
                     fontFamily = FontFamily(Font(R.font.integralcf_regular))
@@ -65,7 +65,7 @@ fun HomeMain() {
                 Text(
                     text = "Sports",
                     color = colorBox2,
-                    modifier = Modifier.padding(top = 10.dp),
+                    modifier = Modifier.padding(top = 10.dp).align(Alignment.CenterHorizontally),
                     textAlign = TextAlign.Center,
                     fontSize = 10.sp,
                     fontFamily = FontFamily(Font(R.font.integralcf_regular))
@@ -82,7 +82,7 @@ fun HomeMain() {
                 Text(
                     text = "Trains",
                     color = colorBox3,
-                    modifier = Modifier.padding(top = 10.dp),
+                    modifier = Modifier.padding(top = 10.dp).align(Alignment.CenterHorizontally),
                     textAlign = TextAlign.Center,
                     fontSize = 10.sp,
                     fontFamily = FontFamily(Font(R.font.integralcf_regular))
@@ -99,7 +99,7 @@ fun HomeMain() {
                 Text(
                     text = "Soirées",
                     color = colorBox4,
-                    modifier = Modifier.padding(top = 10.dp),
+                    modifier = Modifier.padding(top = 10.dp).align(Alignment.CenterHorizontally),
                     textAlign = TextAlign.Center,
                     fontSize = 10.sp,
                     fontFamily = FontFamily(Font(R.font.integralcf_regular))
