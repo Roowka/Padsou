@@ -43,7 +43,13 @@ fun Input_global(inputText: String) {
             unfocusedIndicatorColor = Color.Transparent,
             disabledIndicatorColor = Color.Transparent
         ),
-        placeholder = { Text(text = "${inputText}", color = WhiteText) }
+        placeholder = {
+            Text(
+                text = "${inputText}",
+                color = WhiteText,
+                fontFamily = FontFamily(Font(R.font.inter_regular))
+            )
+        }
     )
 
 }
