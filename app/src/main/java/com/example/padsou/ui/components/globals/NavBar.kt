@@ -1,5 +1,6 @@
 package com.example.padsou.ui.components.globals
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -17,6 +18,7 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.padsou.classes.ScreenBottomNavigation
+import com.example.padsou.ui.theme.greyNavBar
 
 @Composable
 fun NavBar(navController: NavHostController) {
@@ -40,7 +42,7 @@ fun NavBar(navController: NavHostController) {
                 selected = currentDestination?.hierarchy?.any { it.route == item.route} == true,
                 onClick = { navController.navigate(item.route) },
                 icon = { Icon(imageVector = item.Icon, contentDescription = null) },
-                modifier = Modifier.offset(y = -5.dp)
+                modifier = Modifier.offset(y = -2.dp)
             )
         }
     }
