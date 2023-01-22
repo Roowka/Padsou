@@ -15,6 +15,6 @@ fun RoutePadsou(navController : NavHostController){
         //Ajouter le navController dans son composant de page
         composable("onboarding") { OnBoarding(navController)}
         composable("register") { TestPage(navController) }
-        composable("home") { Home()}
+        composable("home") { Home(navController)}
     }
 }
