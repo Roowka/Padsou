@@ -15,13 +15,17 @@ import com.example.padsou.ui.theme.PadsouTheme
 
 @Composable
 fun Register(){
-    Column(modifier = Modifier.fillMaxSize().background(GreyBackground)) {
-    Row(modifier = Modifier.padding(top = 80.dp, bottom = 30.dp)) {
-            headerRegister()
+    Column(modifier = Modifier.fillMaxSize().background(GreyBackground), verticalArrangement = Arrangement.SpaceBetween) {
+
+        Column(modifier = Modifier.padding(top = 80.dp)){
+            Row(modifier = Modifier.padding(bottom = 30.dp)) {
+                headerRegister()
+            }
+            Row() {
+                bodyRegister()
+            }
         }
-        Row() {
-            bodyRegister()
-        }
+
         Row() {
             footerRegister()
         }
