@@ -36,7 +36,7 @@ fun bodyLogin(){
             Row(modifier = Modifier
                 .width(300.dp)
                 .padding(bottom = 12.dp)) {
-                Btn_global(text = "Se connecter")
+                Btn_global(text = "Se connecter", {})
             }
     }
 }
