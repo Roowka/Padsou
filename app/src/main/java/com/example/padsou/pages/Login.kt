@@ -6,6 +6,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.example.padsou.ui.components.login.bodyLogin
 import com.example.padsou.ui.components.login.footerLogin
 import com.example.padsou.ui.components.login.headerLogin
@@ -13,7 +15,7 @@ import com.example.padsou.ui.theme.GreyBackground
 import com.example.padsou.ui.theme.PadsouTheme
 
 @Composable
-fun Login(){
+fun Login(navController: NavHostController){
     Column(modifier = Modifier
         .fillMaxSize()
         .background(GreyBackground), verticalArrangement = Arrangement.SpaceBetween) {
@@ -22,20 +24,11 @@ fun Login(){
                 headerLogin()
             }
             Row() {
-                bodyLogin()
+                bodyLogin(navController)
             }
         }
         Row() {
-            footerLogin()
+            footerLogin(navController)
         }
-    }
-}
-
-@Preview(showBackground = true)
-
-@Composable
-fun LoginPreview() {
-    PadsouTheme {
-        Login()
     }
 }

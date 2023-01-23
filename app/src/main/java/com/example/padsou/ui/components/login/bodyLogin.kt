@@ -11,6 +11,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.padsou.R
 import com.example.padsou.ui.components.globals.Btn_global
 import com.example.padsou.ui.components.globals.Input_global
@@ -18,7 +19,7 @@ import com.example.padsou.ui.theme.GreyText
 import com.example.padsou.ui.theme.PadsouTheme
 
 @Composable
-fun bodyLogin(){
+fun bodyLogin(navController: NavHostController){
     Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
             Row(modifier = Modifier
                 .width(300.dp)
@@ -36,17 +37,7 @@ fun bodyLogin(){
             Row(modifier = Modifier
                 .width(300.dp)
                 .padding(bottom = 12.dp)) {
-                Btn_global(text = "Se connecter", {})
+                Btn_global(text = "Se connecter", {navController.navigate("home")})
             }
-    }
-}
-
-@Preview(showBackground = true)
-
-
-@Composable
-fun bodyLoginPreview() {
-    PadsouTheme {
-        bodyLogin()
     }
 }
