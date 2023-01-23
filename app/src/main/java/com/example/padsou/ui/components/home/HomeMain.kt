@@ -1,6 +1,7 @@
 package com.example.padsou.ui.components.home
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.GridCells
@@ -13,6 +14,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -44,11 +47,16 @@ fun HomeMain() {
                         .height(57.dp)
                         .width(57.dp)
                         .background(colorBox1, shape = RoundedCornerShape(5.dp))
-                )
+                ){
+                    Image(painter = painterResource(id = R.drawable.bag_logo), contentDescription = null, contentScale = ContentScale.Fit, modifier =Modifier.align(
+                        Alignment.Center).size(25.dp))
+                }
                 Text(
                     text = "Courses",
                     color = colorBox1,
-                    modifier = Modifier.padding(top = 10.dp).align(Alignment.CenterHorizontally),
+                    modifier = Modifier
+                        .padding(top = 10.dp)
+                        .align(Alignment.CenterHorizontally),
                     textAlign = TextAlign.Center,
                     fontSize = 10.sp,
                     fontFamily = FontFamily(Font(R.font.integralcf_regular))
@@ -61,11 +69,16 @@ fun HomeMain() {
                         .height(57.dp)
                         .width(57.dp)
                         .background(colorBox2, shape = RoundedCornerShape(5.dp))
-                )
+                ){
+                    Image(painter = painterResource(id = R.drawable.sport_logo), contentDescription = null, contentScale = ContentScale.Fit, modifier =Modifier.align(
+                        Alignment.Center).size(25.dp))
+                }
                 Text(
                     text = "Sports",
                     color = colorBox2,
-                    modifier = Modifier.padding(top = 10.dp).align(Alignment.CenterHorizontally),
+                    modifier = Modifier
+                        .padding(top = 10.dp)
+                        .align(Alignment.CenterHorizontally),
                     textAlign = TextAlign.Center,
                     fontSize = 10.sp,
                     fontFamily = FontFamily(Font(R.font.integralcf_regular))
@@ -78,11 +91,16 @@ fun HomeMain() {
                         .height(57.dp)
                         .width(57.dp)
                         .background(colorBox3, shape = RoundedCornerShape(5.dp))
-                )
+                ){
+                    Image(painter = painterResource(id = R.drawable.train_logo), contentDescription = null, contentScale = ContentScale.Fit, modifier =Modifier.align(
+                        Alignment.Center).size(25.dp))
+                }
                 Text(
                     text = "Trains",
                     color = colorBox3,
-                    modifier = Modifier.padding(top = 10.dp).align(Alignment.CenterHorizontally),
+                    modifier = Modifier
+                        .padding(top = 10.dp)
+                        .align(Alignment.CenterHorizontally),
                     textAlign = TextAlign.Center,
                     fontSize = 10.sp,
                     fontFamily = FontFamily(Font(R.font.integralcf_regular))
@@ -95,11 +113,17 @@ fun HomeMain() {
                         .height(57.dp)
                         .width(57.dp)
                         .background(colorBox4, shape = RoundedCornerShape(5.dp))
-                )
+                ){
+                    Image(painter = painterResource(id = R.drawable.soiree_logo), contentDescription = null, contentScale = ContentScale.Fit
+                        , modifier =Modifier.align(
+                        Alignment.Center).size(25.dp))
+                }
                 Text(
                     text = "Soirées",
                     color = colorBox4,
-                    modifier = Modifier.padding(top = 10.dp).align(Alignment.CenterHorizontally),
+                    modifier = Modifier
+                        .padding(top = 10.dp)
+                        .align(Alignment.CenterHorizontally),
                     textAlign = TextAlign.Center,
                     fontSize = 10.sp,
                     fontFamily = FontFamily(Font(R.font.integralcf_regular))
