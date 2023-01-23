@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.padsou.R
+import com.example.padsou.ui.components.addPlan.bodyAddPlan
 import com.example.padsou.ui.components.globals.Btn_global
 import com.example.padsou.ui.components.globals.Input_global
 import com.example.padsou.ui.theme.GreyText
