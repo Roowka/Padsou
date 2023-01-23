@@ -33,6 +33,7 @@ fun HomeMain() {
         modifier = Modifier
             .fillMaxSize()
             .background(WhiteBackground, shape = RoundedCornerShape(35.dp, 35.dp, 0.dp, 0.dp))
+            .padding(bottom = 65.dp)
     ) {
         Row(
             modifier = Modifier
