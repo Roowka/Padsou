@@ -18,6 +18,6 @@ fun OnBoardingFooter(navController: NavHostController){
         .fillMaxWidth()
         .padding(horizontal = 58.dp)
     ) {
-        Btn_global(text = "C'est parti", {navController.navigate("home")},Rose1)
+        Btn_global(text = "C'est parti", {navController.navigate("register")},Rose1)
     }
 }
