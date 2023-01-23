@@ -20,9 +20,9 @@ import com.example.padsou.ui.theme.Purple500
 
 
 @Composable
-fun Btn_global(text : String,color : Color = Purple500, colorText : Color = Color.White){
+fun Btn_global(text : String, click: (()->Unit), color : Color = Purple500, colorText : Color = Color.White){
     Button(
-        onClick = { /*TODO*/ },
+        onClick = click,
         colors = ButtonDefaults.buttonColors(backgroundColor = color),
         contentPadding = PaddingValues(vertical = 20.dp),
         modifier = Modifier.fillMaxWidth(),
@@ -36,6 +36,6 @@ fun Btn_global(text : String,color : Color = Purple500, colorText : Color = Colo
 @Composable
 fun Btn_globalPreview() {
     PadsouTheme {
-        Btn_global("Button text")
+        Btn_global("Button text",{})
     }
 }
