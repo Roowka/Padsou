@@ -44,7 +44,7 @@ fun bodyRegister(){
         }
 
         Row(modifier = Modifier.padding(top = 10.dp, bottom = 10.dp).width(300.dp)){
-            Btn_global("Se connecter")
+            Btn_global("Se connecter", {} )
         }
 
     }
