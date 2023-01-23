@@ -1,6 +1,5 @@
 package com.example.padsou.ui.components.globals
 
-import android.content.DialogInterface.OnClickListener
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -15,7 +14,6 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
 import com.example.padsou.R
 import com.example.padsou.ui.theme.PadsouTheme
 import com.example.padsou.ui.theme.Purple500
