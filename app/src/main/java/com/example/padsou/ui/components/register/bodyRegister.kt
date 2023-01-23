@@ -18,6 +18,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.padsou.R
 import com.example.padsou.ui.components.globals.Btn_global
 import com.example.padsou.ui.components.globals.Input_global
@@ -27,7 +28,7 @@ import com.example.padsou.ui.theme.WhiteText
 
 
 @Composable
-fun bodyRegister(){
+fun bodyRegister(navController: NavHostController){
     Column( modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
 
         Row(modifier = Modifier.padding(top = 12.dp, bottom = 12.dp).width(300.dp)){
@@ -44,21 +45,10 @@ fun bodyRegister(){
         }
 
         Row(modifier = Modifier.padding(top = 10.dp, bottom = 10.dp).width(300.dp)){
-            Btn_global("Se connecter", {} )
+            Btn_global("Se connecter", {navController.navigate("home")} )
         }
 
     }
 
 
-}
-
-@Preview(
-    showBackground = true
-)
-
-@Composable
-fun bodyRegisterPreview(){
-    PadsouTheme {
-        bodyRegister()
-    }
 }

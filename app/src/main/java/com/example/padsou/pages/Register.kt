@@ -23,7 +23,7 @@ fun Register(navController: NavHostController){
                 headerRegister()
             }
             Row() {
-                bodyRegister()
+                bodyRegister(navController)
             }
         }
 
