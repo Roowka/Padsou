@@ -16,6 +16,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.padsou.R
 import com.example.padsou.ui.theme.BlackTitle
 import com.example.padsou.ui.theme.PadsouTheme
@@ -24,10 +25,10 @@ import com.example.padsou.ui.theme.PadsouTheme
 fun headerLogin(colorText : Color = BlackTitle){
     Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally){
       Row() {
-          Text(text = "Te revoilà ! \uD83D\uDD25", color = colorText, fontFamily = FontFamily(Font(R.font.integralcf_regular)), fontWeight = FontWeight.Bold)
+          Text(text = "Te revoilà ! \uD83D\uDD25", color = colorText, fontSize = 26.sp, fontFamily = FontFamily(Font(R.font.integralcf_regular)), fontWeight = FontWeight.Bold)
       }
-        Row(modifier = Modifier.width(200.dp)) {
-            Text(text = "Reviens vite pour profiter des bons plans", color = colorText, textAlign = TextAlign.Center, fontFamily = FontFamily(Font(R.font.inter_regular)), fontWeight = FontWeight.Bold)
+        Row(modifier = Modifier.width(220.dp)) {
+            Text(text = "Reviens vite pour profiter des bons plans", color = colorText, fontSize = 18.sp, textAlign = TextAlign.Center, fontFamily = FontFamily(Font(R.font.inter_regular)), fontWeight = FontWeight.Bold)
         }
     }
 }
