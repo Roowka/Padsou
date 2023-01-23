@@ -16,12 +16,14 @@ import com.example.padsou.ui.theme.PadsouTheme
 fun Login(){
     Column(modifier = Modifier
         .fillMaxSize()
-        .background(GreyBackground)) {
-        Row(modifier = Modifier.padding(top = 80.dp, bottom = 30.dp)) {
-            headerLogin()
-        }
-        Row(modifier = Modifier.absolutePadding(bottom = 335.dp)) {
-            bodyLogin()
+        .background(GreyBackground), verticalArrangement = Arrangement.SpaceBetween) {
+        Column(modifier = Modifier.padding(top = 80.dp)) {
+            Row(modifier = Modifier.padding(bottom = 30.dp)) {
+                headerLogin()
+            }
+            Row() {
+                bodyLogin()
+            }
         }
         Row() {
             footerLogin()
