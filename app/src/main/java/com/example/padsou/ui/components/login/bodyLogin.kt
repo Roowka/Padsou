@@ -98,7 +98,9 @@ fun bodyLogin(navController: NavHostController) {
         ) {
             Btn_global(
                 text = "Se connecter",
-                {  }, mailState.isValid() && passwordState.isValid())
+                { authController.login(mailState.text, passwordState.text, navController) },
+                mailState.isValid() && passwordState.isValid()
+            )
         }
     }
 }

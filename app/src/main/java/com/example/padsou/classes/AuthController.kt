@@ -15,11 +15,11 @@ class AuthController : ViewModel() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("Bien :", "signInWithEmail:success")
-//                    val user = auth.currentUser
-
+                    navHostController.navigate("home")
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w("Nul :", "signInWithEmail:failure", task.exception)
+                    navHostController.navigate("login")
                 }
             }
     }
@@ -32,9 +32,11 @@ class AuthController : ViewModel() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("Bien :", "createUserWithEmail:success")
+                    navHostController.navigate("home")
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w("Nul :", "createUserWithEmail:failure", task.exception)
+                    navHostController.navigate("register")
                 }
             }
     }

@@ -103,7 +103,7 @@ fun bodyRegister(navController: NavHostController) {
         }
 
         Row(modifier = Modifier.padding(top = 10.dp, bottom = 10.dp)) {
-            Btn_global("Se connecter", {}, mailState.isValid() && passwordState.isValid() && confirmPasswordState.isValid())
+            Btn_global("Se connecter", {authController.register(mailState.text,passwordState.text,navController)}, mailState.isValid() && passwordState.isValid() && confirmPasswordState.isValid())
         }
 
     }
