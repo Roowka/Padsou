@@ -21,4 +21,5 @@ val colorBox2 = Color(0xFFF4696A)
 val colorBox3 = Color(0xFF579BFE)
 val colorBox4 = Color(0xFF7C8CF9)
 val greyNavBar = Color(0xFFF2F2F2)
+val InactiveIconColor = Color(0xFFBABFCD)
 

@@ -30,22 +30,22 @@ import com.example.padsou.ui.theme.WhiteText
 
 @Composable
 fun bodyRegister(navController: NavHostController){
-    Column( modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column( modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp)) {
 
-        Row(modifier = Modifier.padding(top = 12.dp, bottom = 12.dp).width(300.dp)){
+        Row(modifier = Modifier.padding(top = 12.dp, bottom = 12.dp)){
             Input_global(inputText = "Ton adresse e-mail")
         }
-        Row(modifier = Modifier.padding(bottom = 12.dp).width(300.dp)){
+        Row(modifier = Modifier.padding(bottom = 12.dp)){
             Input_global(inputText = "Ton mot de passe")
         }
-        Row(modifier = Modifier.padding(bottom = 12.dp).width(300.dp)){
+        Row(modifier = Modifier.padding(bottom = 12.dp)){
             Input_global(inputText = "Confirme ton mot de passe")
         }
         Row(modifier = Modifier.padding(top = 40.dp).width(300.dp)){
             Text(text = "En t’inscrivant, tu acceptes les Conditions générales d’utilisation de Padsou", fontSize = 12.sp, fontWeight = FontWeight.Bold ,color = GreyText, fontFamily = FontFamily(Font(R.font.inter_regular)))
         }
 
-        Row(modifier = Modifier.padding(top = 10.dp, bottom = 10.dp).width(300.dp)){
+        Row(modifier = Modifier.padding(top = 10.dp, bottom = 10.dp)){
             Btn_global("Se connecter", {navController.navigate("home")} )
         }
 
