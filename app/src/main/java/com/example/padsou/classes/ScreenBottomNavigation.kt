@@ -11,6 +11,6 @@ import com.example.padsou.R
 
 sealed class ScreenBottomNavigation(val route: String,val Icon: ImageVector) {
     object Home : ScreenBottomNavigation("home", Icons.Filled.Home)
-    object AddPost : ScreenBottomNavigation("register", Icons.Rounded.AddCircle)
+    object AddPost : ScreenBottomNavigation("addplan", Icons.Rounded.AddCircle)
     object Profile : ScreenBottomNavigation("onboarding",Icons.Filled.AccountCircle)
 }

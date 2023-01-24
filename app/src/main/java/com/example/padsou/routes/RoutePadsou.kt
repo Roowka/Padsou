@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.padsou.pages.AddPlan
 import com.example.padsou.pages.Login
 import com.example.padsou.pages.Register
 import com.example.padsou.pages.TestPage
@@ -19,5 +20,6 @@ fun RoutePadsou(navController : NavHostController){
         composable("register") { Register(navController) }
         composable("login") { Login(navController)}
         composable("home") { Home(navController)}
+        composable("addplan"){ AddPlan(navController)}
     }
 }

@@ -1,6 +1,7 @@
 package com.example.padsou.ui.components.globals
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.width
@@ -24,7 +25,7 @@ import com.example.padsou.ui.theme.Purple1
 
 @Composable
 fun headerAjout(){
-    Column( modifier = Modifier.fillMaxWidth()) {
+    Column( modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.Center) {
         Text(text = "Ajouter", color = Color.White,fontSize = 26.sp , fontWeight = FontWeight.Bold, fontFamily = FontFamily(
             Font(R.font.integralcf_regular)
         ))
