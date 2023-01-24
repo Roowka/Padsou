@@ -9,6 +9,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
@@ -31,8 +32,8 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun headerPlan(titleText: String, descText: String, imageName: Int){
-    Column(modifier = Modifier.fillMaxWidth()) {
-        Box(modifier = Modifier.height(240.dp).background(color = Color.Transparent, shape = RoundedCornerShape(15.dp))){
+    Column(modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(bottomStart = 25.dp, bottomEnd = 25.dp))) {
+        Box(modifier = Modifier.height(240.dp)){
             Image(painter = painterResource(id = imageName),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
@@ -61,6 +62,6 @@ fun headerPlan(titleText: String, descText: String, imageName: Int){
 @Composable
 fun headerPlanPreview() {
     PadsouTheme {
-        headerPlan("Titre ici", "Desc ici", R.drawable.tacos_post)
+        headerPlan("Titre ici", "Desc ici", R.drawable.tacos_border)
     }
 }

@@ -24,10 +24,10 @@ fun Plan(){
         .background(GreyBackground), verticalArrangement = Arrangement.SpaceBetween) {
             Column() {
                 Row() {
-                    headerPlan("Abonnement 1 an", "2 mois offerts", R.drawable.tacos_post)
+                    headerPlan("Abonnement 1 an", "2 mois offerts", R.drawable.tacos_border)
                 }
                 Row(modifier = Modifier.padding(top = 31.dp)) {
-                    bodyPlan()
+                    bodyPlan("Hector", "Last chance to look at me Hector", 34, 3)
                 }
             }
             Row(modifier = Modifier.padding(bottom = 30.dp)) {
