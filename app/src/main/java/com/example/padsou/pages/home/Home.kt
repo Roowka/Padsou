@@ -6,12 +6,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import com.example.padsou.ui.components.HomeHeader
 import com.example.padsou.ui.components.globals.NavBar
 import com.example.padsou.ui.components.home.HomeMain
-import com.example.padsou.ui.theme.PadsouTheme
 import com.example.padsou.ui.theme.Purple1
 
 @Composable

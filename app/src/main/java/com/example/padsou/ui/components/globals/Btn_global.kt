@@ -16,11 +16,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.padsou.R
 import com.example.padsou.ui.theme.PadsouTheme
+import com.example.padsou.ui.theme.Purple1
 import com.example.padsou.ui.theme.Purple500
 
 
 @Composable
-fun Btn_global(text : String, click: (()->Unit), color : Color = Purple500, colorText : Color = Color.White){
+fun Btn_global(text : String, click: (()->Unit), color : Color = Purple1, colorText : Color = Color.White){
     Button(
         onClick = click,
         colors = ButtonDefaults.buttonColors(backgroundColor = color),
