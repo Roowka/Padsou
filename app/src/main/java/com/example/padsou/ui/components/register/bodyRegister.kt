@@ -39,7 +39,7 @@ fun bodyRegister(navController: NavHostController) {
 
     val mailState = remember { EmailState() }
     val passwordState = remember { PasswordState() }
-    var confirmPasswordState = remember { ConfirmPasswordState(passwordState.text) }
+    var confirmPasswordState = remember { ConfirmPasswordState() }
 
     val authController = viewModel<AuthController>()
 
@@ -81,6 +81,7 @@ fun bodyRegister(navController: NavHostController) {
                 inputText = "Confirme ton mot de passe",
                 {
                     confirmPasswordState.text = it
+                    confirmPasswordState.state = passwordState.text == confirmPasswordState.text
                     confirmPasswordState.validate()
                 },
                 KeyboardOptions(keyboardType = KeyboardType.Password),

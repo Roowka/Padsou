@@ -15,5 +15,5 @@ open class TextFieldState(
         error = if (isValid()) null else errorMessage(text)
     }
 
-    fun isValid() = validator(text)
+    open fun isValid() = validator(text)
 }
