@@ -67,7 +67,7 @@ fun bodyRegister(navController: NavHostController) {
                 passwordState.error,
                 inputText = "Ton mot de passe",
                 {
-                    passwordState.text = i
+                    passwordState.text = it
                     passwordState.validate()
                 },
                 KeyboardOptions(keyboardType = KeyboardType.Password),
