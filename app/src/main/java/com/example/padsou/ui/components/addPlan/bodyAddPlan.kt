@@ -20,12 +20,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.padsou.R
-import com.example.padsou.classes.Utils
 import com.example.padsou.ui.components.globals.Btn_global
 import com.example.padsou.ui.components.globals.Input_global
-import com.example.padsou.ui.components.globals.headerAjout
-import com.example.padsou.ui.components.login.headerLogin
-import com.example.padsou.ui.components.onboarding.OnBoardingCardPost
 import com.example.padsou.ui.theme.*
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
@@ -80,7 +76,7 @@ fun bodyAddPlan(){
                                         .padding(top = 12.dp)
                                         .padding(horizontal = 29.dp)
                                         .width(313.dp)){
-                                        Input_global(inputText = "Abonnement ")
+                                        Input_global("",null,inputText = "Abonnement ",{})
                                     }
                                     Row(modifier = Modifier
                                         .padding(top = 30.dp)
@@ -93,7 +89,7 @@ fun bodyAddPlan(){
                                         .padding(horizontal = 29.dp)
                                         .width(313.dp)
                                     ){
-                                        Input_global(inputText = "Ne soit pas trop bavard, on s'en fou, va à l'essentiel")
+                                        Input_global("",null,inputText = "Ne soit pas trop bavard, on s'en fou, va à l'essentiel",{})
 
                                     }
                                     Row(modifier = Modifier
@@ -106,7 +102,7 @@ fun bodyAddPlan(){
                                         .padding(top = 12.dp)
                                         .padding(horizontal = 29.dp)
                                         .width(313.dp)){
-                                        Input_global(inputText = "www.lienverstonbonplan.com")
+                                        Input_global("",null,inputText = "www.lienverstonbonplan.com",{})
                                     }
                                     Row(modifier = Modifier
                                         .padding(top = 25.dp)
