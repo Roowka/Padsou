@@ -21,9 +21,10 @@ import com.example.padsou.ui.theme.Purple500
 
 
 @Composable
-fun Btn_global(text : String, click: (()->Unit), color : Color = Purple1, colorText : Color = Color.White){
+fun Btn_global(text : String, click: (()->Unit), enable:Boolean = true, color : Color = Purple1, colorText : Color = Color.White){
     Button(
         onClick = click,
+        enabled = enable,
         colors = ButtonDefaults.buttonColors(backgroundColor = color),
         contentPadding = PaddingValues(vertical = 20.dp),
         modifier = Modifier.fillMaxWidth(),
