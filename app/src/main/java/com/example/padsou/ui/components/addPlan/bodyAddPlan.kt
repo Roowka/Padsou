@@ -12,11 +12,16 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
+import androidx.compose.ui.input.nestedscroll.NestedScrollSource
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.padsou.R
@@ -56,8 +61,8 @@ fun bodyAddPlan(){
             }
 
             Row(){
-                HorizontalPager(count = 2, state = pagerState) { page->
-                    stat = currentPage != 0
+                HorizontalPager(count = 2, state = pagerState, modifier = Modifier.disabledHorizontalPointerInputScroll(stat)) { page->
+                    stat = currentPage == 0
                     when(page) {
 
                         0 ->{
@@ -174,9 +179,14 @@ fun bodyAddPlan(){
 
 }
 
-fun slide(){
-
+private val HorizontalScrollConsumer = object : NestedScrollConnection {
+    override fun onPreScroll(available: Offset, source: NestedScrollSource) = available.copy(y = 0f)
+    override suspend fun onPreFling(available: Velocity) = available.copy(y = 0f)
 }
+
+
+fun Modifier.disabledHorizontalPointerInputScroll(disabled: Boolean = true) =
+    if (disabled) this.nestedScroll(HorizontalScrollConsumer) else this
 
 
 @Preview(showBackground = true)
