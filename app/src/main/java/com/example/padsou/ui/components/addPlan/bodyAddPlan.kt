@@ -47,13 +47,11 @@ fun bodyAddPlan(){
                 .padding(top = 30.dp),horizontalArrangement = Arrangement.Center){
                 HorizontalPagerIndicator(
                     pagerState = pagerState,
-                    activeColor = InactiveGrey,
+                    activeColor = Purple1,
                     inactiveColor = Color.White,
-                    indicatorWidth = 25.dp,
-                    indicatorHeight = 5.dp,
-                    spacing = 10.dp,
-                    modifier = Modifier
-
+                    indicatorWidth = 46.dp,
+                    indicatorHeight = 7.dp,
+                    spacing = 12.dp,
                 )
             }
 
@@ -63,49 +61,58 @@ fun bodyAddPlan(){
                     when(page) {
 
                         0 ->{
-                            LazyColumn() {
+                            LazyColumn(verticalArrangement = Arrangement.SpaceEvenly) {
                                 item {
-                                    Row(modifier = Modifier
-                                        .padding(top = 30.dp)
-                                        .padding(horizontal = 31.dp)){
-                                        Text(text= "Titre", fontWeight = FontWeight.Bold, fontFamily = FontFamily(
-                                            Font(R.font.integralcf_regular)))
+                                    Column() {
+                                        Row(modifier = Modifier
+                                            .padding(top = 25.dp)
+                                            .padding(horizontal = 31.dp)){
+                                            Text(text= "Titre", fontWeight = FontWeight.Bold, fontFamily = FontFamily(
+                                                Font(R.font.integralcf_regular)))
+                                        }
+
+                                        Row(modifier = Modifier
+                                            .padding(top = 12.dp)
+                                            .padding(horizontal = 29.dp)
+                                            .width(313.dp)){
+                                            Input_global("",null,inputText = "Abonnement 1 an Basic-Fit ",{})
+                                        }
+                                    }
+
+                                    Column() {
+                                        Row(modifier = Modifier
+                                            .padding(top = 30.dp)
+                                            .padding(horizontal = 31.dp)){
+                                            Text(text= "Description", fontWeight = FontWeight.Bold, fontFamily = FontFamily(
+                                                Font(R.font.integralcf_regular)))
+                                        }
+                                        Row(modifier = Modifier
+                                            .padding(top = 12.dp)
+                                            .padding(horizontal = 29.dp)
+                                            .width(313.dp)
+                                        ){
+                                            Input_global("",null,inputText = "Ne soit pas trop bavard, on s'en fou, va à l'essentiel",{})
+
+                                        }
+                                    }
+
+                                    Column() {
+                                        Row(modifier = Modifier
+                                            .padding(top = 30.dp)
+                                            .padding(horizontal = 29.dp)){
+                                            Text(text= "Lien", fontWeight = FontWeight.Bold, fontFamily = FontFamily(
+                                                Font(R.font.integralcf_regular)))
+                                        }
+                                        Row(modifier = Modifier
+                                            .padding(top = 12.dp)
+                                            .padding(horizontal = 29.dp)
+                                            .width(313.dp)){
+                                            Input_global("",null,inputText = "www.lienverstonbonplan.com",{})
+                                        }
                                     }
 
                                     Row(modifier = Modifier
-                                        .padding(top = 12.dp)
-                                        .padding(horizontal = 29.dp)
-                                        .width(313.dp)){
-                                        Input_global("",null,inputText = "Abonnement ",{})
-                                    }
-                                    Row(modifier = Modifier
-                                        .padding(top = 30.dp)
-                                        .padding(horizontal = 31.dp)){
-                                        Text(text= "Description", fontWeight = FontWeight.Bold, fontFamily = FontFamily(
-                                            Font(R.font.integralcf_regular)))
-                                    }
-                                    Row(modifier = Modifier
-                                        .padding(top = 12.dp)
-                                        .padding(horizontal = 29.dp)
-                                        .width(313.dp)
-                                    ){
-                                        Input_global("",null,inputText = "Ne soit pas trop bavard, on s'en fou, va à l'essentiel",{})
-
-                                    }
-                                    Row(modifier = Modifier
-                                        .padding(top = 30.dp)
-                                        .padding(horizontal = 29.dp)){
-                                        Text(text= "Lien", fontWeight = FontWeight.Bold, fontFamily = FontFamily(
-                                            Font(R.font.integralcf_regular)))
-                                    }
-                                    Row(modifier = Modifier
-                                        .padding(top = 12.dp)
-                                        .padding(horizontal = 29.dp)
-                                        .width(313.dp)){
-                                        Input_global("",null,inputText = "www.lienverstonbonplan.com",{})
-                                    }
-                                    Row(modifier = Modifier
-                                        .padding(top = 25.dp)
+                                        .padding(top = 35.dp)
                                         .padding(horizontal = 29.dp)){
                                         Btn_global(text = "Suivant", click = {coroutineScope.launch { pagerState.animateScrollToPage(page = pagerState.currentPage + 1) }})
                                     }
@@ -118,25 +125,36 @@ fun bodyAddPlan(){
                     1->{
                         Column( modifier = Modifier
                             .fillMaxSize()
-                            .background(WhiteBackground, shape = RoundedCornerShape(35.dp, 35.dp, 0.dp, 0.dp)), horizontalAlignment = Alignment.CenterHorizontally) {
+                            .background(
+                                WhiteBackground,
+                                shape = RoundedCornerShape(35.dp, 35.dp, 0.dp, 0.dp)
+                            ), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.SpaceEvenly) {
 
 
+                            Column(horizontalAlignment = Alignment.CenterHorizontally){
+                                Row(modifier = Modifier.padding(top = 40.dp, bottom = 26.dp)){
+                                    Text(text= "Photo du bon plan", fontWeight = FontWeight.Bold, fontFamily = FontFamily(
+                                        Font(R.font.integralcf_regular)))
+                                }
 
-                            Row(modifier = Modifier.padding(top = 76.dp, bottom = 26.dp)){
-                                Text(text= "Photo du bon plan", fontWeight = FontWeight.Bold, fontFamily = FontFamily(
-                                    Font(R.font.integralcf_regular)))
-                            }
-
-                            Box(modifier = Modifier.background(Purple1,shape = RoundedCornerShape(15.dp)).padding(horizontal = 60.dp).height(150.dp).width(30.dp)){
-                                Icon(Icons.Filled.Add,contentDescription = null, tint = Color.White, modifier = Modifier.align(
-                                    Alignment.Center).size(1000.dp))
-
+                                Row(modifier = Modifier.padding(horizontal = 103.dp)) {
+                                    Box(modifier = Modifier
+                                        .background(Purple1, shape = RoundedCornerShape(15.dp))
+                                        .height(160.dp)
+                                        .width(174.dp)){
+                                        Icon(Icons.Filled.Add,contentDescription = null, tint = Color.White, modifier = Modifier
+                                            .align(
+                                                Alignment.Center
+                                            )
+                                            .size(60.dp))
+                                    }
+                                }
                             }
 
                             Row(modifier = Modifier
                                 .padding(top = 135.dp)
                                 .padding(horizontal = 29.dp)){
-                                Btn_global(text = "Suivant", click = { /*TODO*/ })
+                                Btn_global(text = "Ajouter ce bon plan", click = { /*TODO*/ })
                             }
 
                         }
