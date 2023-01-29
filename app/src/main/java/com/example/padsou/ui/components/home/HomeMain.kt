@@ -1,5 +1,7 @@
 package com.example.padsou.ui.components.home
 
+import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -10,6 +12,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.Font
@@ -22,13 +25,21 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.padsou.R
+import com.example.padsou.classes.CategoryController
+import com.example.padsou.models.CategoryModel
 import com.example.padsou.models.PostModel
 import com.example.padsou.ui.theme.*
+import kotlinx.coroutines.flow.collect
+
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HomeMain() {
+    val categoryController = viewModel<CategoryController>()
+    val listCategories: List<CategoryModel> = categoryController.categories.collectAsState().value
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -42,93 +53,8 @@ fun HomeMain() {
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Column() {
-                Box(
-                    modifier = Modifier
-                        .height(57.dp)
-                        .width(57.dp)
-                        .background(colorBox1, shape = RoundedCornerShape(5.dp))
-                ){
-                    Image(painter = painterResource(id = R.drawable.bag_logo), contentDescription = null, contentScale = ContentScale.Fit, modifier =Modifier.align(
-                        Alignment.Center).size(25.dp))
-                }
-                Text(
-                    text = "Courses",
-                    color = colorBox1,
-                    modifier = Modifier
-                        .padding(top = 10.dp)
-                        .align(Alignment.CenterHorizontally),
-                    textAlign = TextAlign.Center,
-                    fontSize = 10.sp,
-                    fontFamily = FontFamily(Font(R.font.integralcf_regular))
-                )
-            }
-
-            Column() {
-                Box(
-                    modifier = Modifier
-                        .height(57.dp)
-                        .width(57.dp)
-                        .background(colorBox2, shape = RoundedCornerShape(5.dp))
-                ){
-                    Image(painter = painterResource(id = R.drawable.sport_logo), contentDescription = null, contentScale = ContentScale.Fit, modifier =Modifier.align(
-                        Alignment.Center).size(25.dp))
-                }
-                Text(
-                    text = "Sports",
-                    color = colorBox2,
-                    modifier = Modifier
-                        .padding(top = 10.dp)
-                        .align(Alignment.CenterHorizontally),
-                    textAlign = TextAlign.Center,
-                    fontSize = 10.sp,
-                    fontFamily = FontFamily(Font(R.font.integralcf_regular))
-                )
-            }
-
-            Column() {
-                Box(
-                    modifier = Modifier
-                        .height(57.dp)
-                        .width(57.dp)
-                        .background(colorBox3, shape = RoundedCornerShape(5.dp))
-                ){
-                    Image(painter = painterResource(id = R.drawable.train_logo), contentDescription = null, contentScale = ContentScale.Fit, modifier =Modifier.align(
-                        Alignment.Center).size(25.dp))
-                }
-                Text(
-                    text = "Trains",
-                    color = colorBox3,
-                    modifier = Modifier
-                        .padding(top = 10.dp)
-                        .align(Alignment.CenterHorizontally),
-                    textAlign = TextAlign.Center,
-                    fontSize = 10.sp,
-                    fontFamily = FontFamily(Font(R.font.integralcf_regular))
-                )
-            }
-
-            Column() {
-                Box(
-                    modifier = Modifier
-                        .height(57.dp)
-                        .width(57.dp)
-                        .background(colorBox4, shape = RoundedCornerShape(5.dp))
-                ){
-                    Image(painter = painterResource(id = R.drawable.soiree_logo), contentDescription = null, contentScale = ContentScale.Fit
-                        , modifier =Modifier.align(
-                        Alignment.Center).size(25.dp))
-                }
-                Text(
-                    text = "Soirées",
-                    color = colorBox4,
-                    modifier = Modifier
-                        .padding(top = 10.dp)
-                        .align(Alignment.CenterHorizontally),
-                    textAlign = TextAlign.Center,
-                    fontSize = 10.sp,
-                    fontFamily = FontFamily(Font(R.font.integralcf_regular))
-                )
+            listCategories.forEach { categoryModel ->
+                HomeCategoryCard(categoryModel = categoryModel)
             }
         }
 

@@ -79,4 +79,13 @@ dependencies {
 
     // Declare the dependency for the Firebase Authentication library
     implementation 'com.google.firebase:firebase-auth-ktx'
+
+    // Declare the dependency for the Firebase Firestore library
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+
+    // FirebaseUI Storage only
+    implementation 'com.google.firebase:firebase-storage-ktx'
+
+    implementation("io.coil-kt:coil-compose:2.0.0-rc01")
+
 }
