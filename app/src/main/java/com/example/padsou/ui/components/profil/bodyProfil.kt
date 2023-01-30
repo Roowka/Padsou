@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -19,6 +20,8 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.unit.dp
@@ -128,7 +131,10 @@ fun bodyProfil(user: UserModel) {
                                     .padding(horizontal = 29.dp)
                                     .width(313.dp)
                             ) {
-                                Input_profil(user.password, null, inputText = "Mot de passe", {})
+                                Input_profil(user.password, null, inputText = "Mot de passe", {},
+                                    KeyboardOptions(keyboardType = KeyboardType.Password),
+                                    PasswordVisualTransformation()
+                                )
                             }
                         }
                         Row(

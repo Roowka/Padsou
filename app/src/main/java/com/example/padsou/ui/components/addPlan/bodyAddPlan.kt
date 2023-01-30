@@ -1,6 +1,11 @@
 package com.example.padsou.ui.components.addPlan
 
+import android.net.Uri
+import android.util.Log
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -45,6 +50,15 @@ fun bodyAddPlan() {
     val coroutineScope = rememberCoroutineScope()
 
     val linkState = remember { LinkState() }
+
+    var imageUri by remember {
+        mutableStateOf<Uri?>(null)
+    }
+
+    val launcher = rememberLauncherForActivityResult(contract =
+    ActivityResultContracts.GetContent()) { uri: Uri? ->
+        imageUri = uri
+    }
 
     Box() {
         Column(
@@ -221,6 +235,7 @@ fun bodyAddPlan() {
                                                 )
                                                 .height(160.dp)
                                                 .width(174.dp)
+                                                .clickable { launcher.launch("image/*") }
                                         ) {
                                             Icon(
                                                 Icons.Filled.Add,
