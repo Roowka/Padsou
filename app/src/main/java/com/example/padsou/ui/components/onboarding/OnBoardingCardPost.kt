@@ -9,7 +9,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -20,11 +20,23 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import coil.compose.rememberAsyncImagePainter
 import com.example.padsou.R
+import com.example.padsou.classes.PostController
 import com.example.padsou.models.PostModel
 
 @Composable
 fun OnBoardingCardPost(post : PostModel){
+    val postController = viewModel<PostController>()
+    var uriPicture by remember {
+        mutableStateOf("")
+    }
+
+    postController.getPicturesOfPostWithNames(post.picturePost.toString()){
+            uri -> uriPicture = uri
+    }
+
     Card(shape = RoundedCornerShape(10.dp),
         elevation = 0.dp,
         modifier = Modifier
@@ -33,7 +45,7 @@ fun OnBoardingCardPost(post : PostModel){
             .height(104.dp)) {
         Column() {
             Box(modifier = Modifier.fillMaxWidth()){
-                Image(painter = painterResource(id =post.postPicture),
+                Image(painter = rememberAsyncImagePainter(uriPicture),
                     contentDescription = "test",
                     modifier = Modifier
                         .fillMaxWidth()
@@ -42,7 +54,7 @@ fun OnBoardingCardPost(post : PostModel){
                     contentScale = ContentScale.Crop
                 )
 
-                Image(painter = painterResource(id = post.logo),
+                Image(painter = rememberAsyncImagePainter(post.logo),
                     contentDescription = "logo",
                     modifier = Modifier.size(20.dp)
                         .offset(x = 37.dp,y = 48.dp)

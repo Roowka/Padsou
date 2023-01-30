@@ -28,6 +28,7 @@ import com.example.padsou.InputValidation.PasswordState
 import com.example.padsou.R
 import com.example.padsou.ui.components.addPlan.bodyAddPlan
 import com.example.padsou.classes.AuthController
+import com.example.padsou.classes.UserController
 import com.example.padsou.ui.components.globals.Btn_global
 import com.example.padsou.ui.components.globals.Input_global
 import com.example.padsou.ui.theme.GreyText
@@ -43,6 +44,7 @@ fun bodyRegister(navController: NavHostController) {
     var confirmPasswordState = remember { ConfirmPasswordState() }
 
     val authController = viewModel<AuthController>()
+    val userController = viewModel<UserController>()
 
     Column(
         modifier = Modifier
@@ -104,7 +106,7 @@ fun bodyRegister(navController: NavHostController) {
         }
 
         Row(modifier = Modifier.padding(top = 10.dp, bottom = 10.dp)) {
-            Btn_global("Se connecter", {authController.register(mailState.text,passwordState.text,navController)}, mailState.isValid() && passwordState.isValid() && confirmPasswordState.isValid())
+            Btn_global("Se connecter", {authController.register(mailState.text,passwordState.text,navController,userController)}, mailState.isValid() && passwordState.isValid() && confirmPasswordState.isValid())
         }
 
     }

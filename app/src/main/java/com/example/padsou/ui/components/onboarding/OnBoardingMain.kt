@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
@@ -24,7 +25,9 @@ import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontWeight
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.padsou.R
+import com.example.padsou.classes.PostController
 import com.example.padsou.models.PostModel
 
 
@@ -32,12 +35,8 @@ import com.example.padsou.models.PostModel
 @Composable
 fun OnBoardingMain(){
     val pagerState = rememberPagerState()
-    val listOfPost = listOf<PostModel>(
-        PostModel("Abonnement 1 an","2 mois offert",R.drawable.basic_post,"",R.drawable.basic_logo),
-        PostModel("Le grand barathon","1 verre acheté = 1 offert",R.drawable.bar_post,"",R.drawable.bar_logo),
-        PostModel("Garantie appart","Pas besoin de garants",R.drawable.chambre_post,"",R.drawable.chambre_logo),
-        PostModel("Giga MAXI Tacos","5€99, dépêche toi !",R.drawable.tacos_post,"",R.drawable.tacos_logo),
-    )
+    val postController = viewModel<PostController>()
+    val listOfPost :List<PostModel> = postController.posts.collectAsState().value
 
     Column(modifier = Modifier
         .fillMaxWidth()) {

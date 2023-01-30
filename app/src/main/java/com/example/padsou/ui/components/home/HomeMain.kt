@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.padsou.R
 import com.example.padsou.classes.CategoryController
+import com.example.padsou.classes.PostController
 import com.example.padsou.models.CategoryModel
 import com.example.padsou.models.PostModel
 import com.example.padsou.ui.theme.*
@@ -38,7 +39,9 @@ import kotlinx.coroutines.flow.collect
 @Composable
 fun HomeMain() {
     val categoryController = viewModel<CategoryController>()
+    val postController = viewModel<PostController>()
     val listCategories: List<CategoryModel> = categoryController.categories.collectAsState().value
+    val listOfPost: List<PostModel> = postController.posts.collectAsState().value
 
     Column(
         modifier = Modifier
@@ -80,44 +83,6 @@ fun HomeMain() {
             )
         }
 
-        val listOfPost = listOf<PostModel>(
-            PostModel(
-                "Abonnement 1 an", "2 mois offert",
-                R.drawable.basic_post,
-                "",
-                R.drawable.basic_logo
-            ),
-            PostModel(
-                "Le grand barathon", "1 verre acheté = 1 offert",
-                R.drawable.bar_post,
-                "",
-                R.drawable.bar_logo
-            ),
-            PostModel(
-                "Garantie appart", "Pas besoin de garants",
-                R.drawable.chambre_post,
-                "",
-                R.drawable.chambre_logo
-            ),
-            PostModel(
-                "Giga MAXI Tacos", "5€99, dépêche toi !",
-                R.drawable.tacos_post,
-                "",
-                R.drawable.tacos_logo
-            ),
-            PostModel(
-                "Abonnement 1 an", "2 mois offert",
-                R.drawable.basic_post,
-                "",
-                R.drawable.basic_logo
-            ),
-            PostModel(
-                "Le grand barathon", "1 verre acheté = 1 offert",
-                R.drawable.bar_post,
-                "",
-                R.drawable.bar_logo
-            ),
-        )
 
         LazyVerticalGrid(
             cells = GridCells.Fixed(2),

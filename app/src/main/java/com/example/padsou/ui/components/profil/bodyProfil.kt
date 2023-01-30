@@ -23,6 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.unit.dp
 import com.example.padsou.R
+import com.example.padsou.models.UserModel
 import com.example.padsou.ui.components.globals.Btn_global
 import com.example.padsou.ui.components.globals.Input_global
 import com.example.padsou.ui.components.globals.Input_profil
@@ -33,100 +34,116 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
 
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun bodyProfil(){
+fun bodyProfil(user: UserModel) {
+    val currentUser = Firebase.auth.currentUser
+
+    Box() {
+        Column(
+            modifier = Modifier
+                .background(WhiteBackground, shape = RoundedCornerShape(35.dp, 35.dp, 0.dp, 0.dp))
+                .padding(bottom = 50.dp)
+        ) {
 
 
-    Box(){
-        Column( modifier = Modifier
-            .background(WhiteBackground, shape = RoundedCornerShape(35.dp, 35.dp, 0.dp, 0.dp))
-            .padding(bottom = 50.dp)) {
+            Row() {
 
+                LazyColumn(verticalArrangement = Arrangement.SpaceEvenly) {
+                    item {
+                        Column() {
+                            Row(
+                                modifier = Modifier
+                                    .padding(top = 25.dp)
+                                    .padding(horizontal = 31.dp)
+                            ) {
+                                Text(
+                                    text = "Mon pseudo",
+                                    fontWeight = FontWeight.Bold,
+                                    fontFamily = FontFamily(
+                                        Font(R.font.integralcf_regular)
+                                    )
+                                )
+                            }
 
-            Row(){
+                            Row(
+                                modifier = Modifier
+                                    .padding(top = 12.dp)
+                                    .padding(horizontal = 29.dp)
+                                    .width(313.dp)
+                            ) {
+                                Input_profil(user.pseudo, null, inputText = " ", {})
+                            }
+                        }
 
-                            LazyColumn(verticalArrangement = Arrangement.SpaceEvenly) {
-                                item {
-                                    Column() {
-                                        Row(modifier = Modifier
-                                            .padding(top = 25.dp)
-                                            .padding(horizontal = 31.dp)){
-                                            Text(text= "Mon pseudo", fontWeight = FontWeight.Bold, fontFamily = FontFamily(
-                                                Font(R.font.integralcf_regular)
-                                            )
-                                            )
-                                        }
-
-                                        Row(modifier = Modifier
-                                            .padding(top = 12.dp)
-                                            .padding(horizontal = 29.dp)
-                                            .width(313.dp)){
-                                            Input_profil("test",null,inputText = " ",{})
-                                        }
-                                    }
-
-                                    Column() {
-                                        Row(modifier = Modifier
-                                            .padding(top = 30.dp)
-                                            .padding(horizontal = 31.dp)){
-                                            Text(text= "adresse e-mail", fontWeight = FontWeight.Bold, fontFamily = FontFamily(
-                                                Font(R.font.integralcf_regular)
-                                            )
-                                            )
-                                        }
-                                        Row(modifier = Modifier
-                                            .padding(top = 12.dp)
-                                            .padding(horizontal = 29.dp)
-                                            .width(313.dp)
-                                        ){
-                                            Input_profil("",null,inputText = "jacky@gmail.com",{})
-
-                                        }
-                                    }
-
-                                    Column() {
-                                        Row(modifier = Modifier
-                                            .padding(top = 30.dp)
-                                            .padding(horizontal = 29.dp)){
-                                            Text(text= "mot de passe", fontWeight = FontWeight.Bold, fontFamily = FontFamily(
-                                                Font(R.font.integralcf_regular)
-                                            )
-                                            )
-                                        }
-                                        Row(modifier = Modifier
-                                            .padding(top = 12.dp)
-                                            .padding(horizontal = 29.dp)
-                                            .width(313.dp)){
-                                            Input_profil("",null,inputText = "www.lienverstonbonplan.com",{})
-                                        }
-                                    }
-                                    Row(modifier = Modifier
-                                        .padding(top = 35.dp)
-                                        .padding(horizontal = 29.dp)){
-                                        Btn_global(text = "ENREGISTRER", click = {})
-                                    }
+                        Column() {
+                            Row(
+                                modifier = Modifier
+                                    .padding(top = 30.dp)
+                                    .padding(horizontal = 31.dp)
+                            ) {
+                                Text(
+                                    text = "adresse e-mail",
+                                    fontWeight = FontWeight.Bold,
+                                    fontFamily = FontFamily(
+                                        Font(R.font.integralcf_regular)
+                                    )
+                                )
+                            }
+                            Row(
+                                modifier = Modifier
+                                    .padding(top = 12.dp)
+                                    .padding(horizontal = 29.dp)
+                                    .width(313.dp)
+                            ) {
+                                if (currentUser != null) {
+                                    currentUser.email?.let { Input_profil(it, null, inputText = "jacky@gmail.com", {}) }
                                 }
 
                             }
-
                         }
 
+                        Column() {
+                            Row(
+                                modifier = Modifier
+                                    .padding(top = 30.dp)
+                                    .padding(horizontal = 29.dp)
+                            ) {
+                                Text(
+                                    text = "Mot de passe",
+                                    fontWeight = FontWeight.Bold,
+                                    fontFamily = FontFamily(
+                                        Font(R.font.integralcf_regular)
+                                    )
+                                )
+                            }
+                            Row(
+                                modifier = Modifier
+                                    .padding(top = 12.dp)
+                                    .padding(horizontal = 29.dp)
+                                    .width(313.dp)
+                            ) {
+                                Input_profil(user.password, null, inputText = "Mot de passe", {})
+                            }
+                        }
+                        Row(
+                            modifier = Modifier
+                                .padding(top = 35.dp)
+                                .padding(horizontal = 29.dp)
+                        ) {
+                            Btn_global(text = "ENREGISTRER", click = {})
+                        }
+                    }
+
+                }
+
+            }
+
         }
-    }
-}
-
-
-
-@Preview(showBackground = true)
-
-
-@Composable
-fun bodyProfilPreview() {
-    PadsouTheme {
-        (bodyProfil())
     }
 }
