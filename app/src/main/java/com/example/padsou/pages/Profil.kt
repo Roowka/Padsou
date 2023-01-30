@@ -20,7 +20,7 @@ fun Profil(navController: NavHostController){
     Column(modifier = Modifier
         .fillMaxSize()
         .background(Purple1), verticalArrangement = Arrangement.SpaceBetween) {
-        Box(modifier = Modifier.padding(top = 40.dp).padding(bottom = 30.dp)){
+        Box(modifier = Modifier.padding(top = 40.dp)){
             headerProfil()
         }
         Box(){
