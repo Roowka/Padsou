@@ -33,15 +33,14 @@ import com.example.padsou.models.PostModel
 fun OnBoardingMain(){
     val pagerState = rememberPagerState()
     val listOfPost = listOf<PostModel>(
-        PostModel("Abonnement 1 an","2 mois offert",R.drawable.basic_post,R.drawable.basic_logo),
-        PostModel("Le grand barathon","1 verre acheté = 1 offert",R.drawable.bar_post,R.drawable.bar_logo),
-        PostModel("Garantie appart","Pas besoin de garants",R.drawable.chambre_post,R.drawable.chambre_logo),
-        PostModel("Giga MAXI Tacos","5€99, dépêche toi !",R.drawable.tacos_post,R.drawable.tacos_logo),
+        PostModel("Abonnement 1 an","2 mois offert",R.drawable.basic_post,"",R.drawable.basic_logo),
+        PostModel("Le grand barathon","1 verre acheté = 1 offert",R.drawable.bar_post,"",R.drawable.bar_logo),
+        PostModel("Garantie appart","Pas besoin de garants",R.drawable.chambre_post,"",R.drawable.chambre_logo),
+        PostModel("Giga MAXI Tacos","5€99, dépêche toi !",R.drawable.tacos_post,"",R.drawable.tacos_logo),
     )
 
     Column(modifier = Modifier
-        .fillMaxWidth()
-        .padding(horizontal = Utils.PxToDp(pixels = 66f).dp)) {
+        .fillMaxWidth()) {
 
         Row(modifier = Modifier.fillMaxWidth(),horizontalArrangement = Arrangement.Center){
             HorizontalPagerIndicator(
