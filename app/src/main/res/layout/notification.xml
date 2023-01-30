@@ -15,7 +15,7 @@
             android:layout_marginTop="10dp"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/basic_logo"/>
+            android:src="@drawable/padsou"/>
 
         <TextView
             android:id="@+id/title"
