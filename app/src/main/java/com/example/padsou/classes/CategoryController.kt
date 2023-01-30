@@ -21,7 +21,7 @@ class CategoryController : ViewModel() {
     private fun getCategories() {
         val db = Firebase.firestore
 
-        db.collection("categories").orderBy("name").get()
+        db.collection("categories").orderBy("position").get()
             .addOnSuccessListener { result ->
                 _categories.value = result.toObjects()
             }
