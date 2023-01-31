@@ -1,6 +1,8 @@
 package com.example.padsou.ui.components.addPlan
 
+import android.graphics.Bitmap
 import android.net.Uri
+import android.provider.MediaStore
 import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -19,9 +21,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -29,9 +33,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import com.example.padsou.InputValidation.EmailState
 import com.example.padsou.InputValidation.LinkState
+import com.example.padsou.InputValidation.PostInfoState
 import com.example.padsou.R
+import com.example.padsou.classes.PostController
+import com.example.padsou.models.PostModel
 import com.example.padsou.ui.components.globals.Btn_global
 import com.example.padsou.ui.components.globals.Input_global
 import com.example.padsou.ui.theme.*
@@ -39,26 +48,38 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import kotlinx.coroutines.launch
+import java.io.ByteArrayOutputStream
 
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun bodyAddPlan() {
+fun bodyAddPlan(navController: NavHostController) {
     val pagerState = rememberPagerState()
     var stat by remember { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()
 
+    val titleState = remember { PostInfoState() }
+    val descriptionState = remember { PostInfoState() }
     val linkState = remember { LinkState() }
 
     var imageUri by remember {
         mutableStateOf<Uri?>(null)
     }
 
-    val launcher = rememberLauncherForActivityResult(contract =
-    ActivityResultContracts.GetContent()) { uri: Uri? ->
+    val launcher = rememberLauncherForActivityResult(
+        contract =
+        ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
         imageUri = uri
     }
+
+
+    val postController = viewModel<PostController>()
+
+    val context = LocalContext.current
 
     Box() {
         Column(
@@ -116,10 +137,13 @@ fun bodyAddPlan() {
                                                 .width(313.dp)
                                         ) {
                                             Input_global(
-                                                "",
-                                                null,
+                                                titleState.text,
+                                                titleState.error,
                                                 inputText = "Abonnement 1 an Basic-Fit ",
-                                                {})
+                                                {
+                                                    titleState.text = it
+                                                    titleState.validate()
+                                                })
                                         }
                                     }
 
@@ -144,10 +168,13 @@ fun bodyAddPlan() {
                                                 .width(313.dp)
                                         ) {
                                             Input_global(
-                                                "",
-                                                null,
+                                                descriptionState.text,
+                                                descriptionState.error,
                                                 inputText = "Ne soit pas trop bavard, on s'en fou, va à l'essentiel",
-                                                {})
+                                                {
+                                                    descriptionState.text = it
+                                                    descriptionState.validate()
+                                                })
 
                                         }
                                     }
@@ -190,6 +217,7 @@ fun bodyAddPlan() {
                                     ) {
                                         Btn_global(
                                             text = "Suivant",
+                                            enable = titleState.isValid() && descriptionState.isValid() && linkState.isValid(),
                                             click = {
                                                 coroutineScope.launch {
                                                     pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
@@ -256,19 +284,53 @@ fun bodyAddPlan() {
                                         .padding(top = 135.dp)
                                         .padding(horizontal = 29.dp)
                                 ) {
-                                    Btn_global(text = "Ajouter ce bon plan", click = { /*TODO*/ })
-                                }
+                                    Btn_global(
+                                        text = "Ajouter ce bon plan",
+                                        enable = imageUri !== null,
+                                        click = {
+                                            val bitmap = MediaStore.Images.Media.getBitmap(
+                                                context.contentResolver,
+                                                imageUri
+                                            )
+                                            val baos = ByteArrayOutputStream()
+                                            bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos)
+                                            val data = baos.toByteArray()
 
+                                            val ref = Firebase.storage.reference.child(
+                                                "images/posts/".plus(
+                                                    titleState.text.substring(
+                                                        0,
+                                                        3
+                                                    )
+                                                )
+                                            )
+
+                                            ref.putBytes(data)
+                                                .addOnSuccessListener {
+                                                    val posts =
+                                                        PostModel(
+                                                            titleState.text,
+                                                            descriptionState.text,
+                                                            titleState.text.substring(0, 3),
+                                                            linkState.text,
+                                                            "https://firebasestorage.googleapis.com/v0/b/padsou-84958.appspot.com/o/images%2Fposts%2Flogo%2Fpadsou.png?alt=media&token=3d0b67bc-d423-4190-aaca-05ebffdfbaec"
+                                                        )
+                                                    postController.addPost(posts, navController)
+                                                }
+                                                .addOnFailureListener { ex ->
+                                                    Log.e(
+                                                        "oula",
+                                                        ex.toString()
+                                                    )
+                                                }
+                                        })
+                                }
                             }
                         }
 
                     }
-
-
                 }
             }
-
-
         }
     }
 
@@ -283,14 +345,3 @@ private val HorizontalScrollConsumer = object : NestedScrollConnection {
 
 fun Modifier.disabledHorizontalPointerInputScroll(disabled: Boolean = true) =
     if (disabled) this.nestedScroll(HorizontalScrollConsumer) else this
-
-
-@Preview(showBackground = true)
-
-
-@Composable
-fun bodyAddPlanPreview() {
-    PadsouTheme {
-        (bodyAddPlan())
-    }
-}

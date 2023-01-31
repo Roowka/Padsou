@@ -1,5 +1,6 @@
 package com.example.padsou.ui.components.onboarding
 
+import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -33,15 +34,18 @@ import com.example.padsou.models.PostModel
 
 @OptIn(ExperimentalPagerApi::class, ExperimentalFoundationApi::class)
 @Composable
-fun OnBoardingMain(){
+fun OnBoardingMain() {
     val pagerState = rememberPagerState()
     val postController = viewModel<PostController>()
-    val listOfPost :List<PostModel> = postController.posts.collectAsState().value
+    val listOfPost: List<PostModel> = postController.posts.collectAsState().value
+    var itemPerPage = 4
 
-    Column(modifier = Modifier
-        .fillMaxWidth()) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+    ) {
 
-        Row(modifier = Modifier.fillMaxWidth(),horizontalArrangement = Arrangement.Center){
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
             HorizontalPagerIndicator(
                 pagerState = pagerState,
                 activeColor = Color.White,
@@ -54,29 +58,45 @@ fun OnBoardingMain(){
             )
         }
 
-        Row(){
-            HorizontalPager(count = 3, state = pagerState) { page->
-                Box(modifier = Modifier
-                    .background(Color.White, shape = RoundedCornerShape(25.dp))
-                    .width(250.dp)
-                    .height(250.dp)
-                    .padding( horizontal = Utils.PxToDp(pixels = 40f).dp)
+        Row() {
+            HorizontalPager(count = 3, state = pagerState) { page ->
+                Box(
+                    modifier = Modifier
+                        .background(Color.White, shape = RoundedCornerShape(25.dp))
+                        .width(250.dp)
+                        .height(250.dp)
+                        .padding(horizontal = Utils.PxToDp(pixels = 40f).dp)
                 ) {
-                    LazyVerticalGrid(cells = GridCells.Fixed(2),
-                        horizontalArrangement = Arrangement.spacedBy(10.dp),
-                        verticalArrangement = Arrangement.SpaceEvenly
-                        , modifier = Modifier.fillMaxHeight().fillMaxHeight()){
-                        items(listOfPost){
-                            post -> OnBoardingCardPost(post = post)
+                    if (listOfPost.size > 0) {
+                        var end = itemPerPage*(page +1)
+                        var start = itemPerPage*page
+                        if (end > listOfPost.size){
+                            start = 0
+                            end = itemPerPage
+                        }
+                        val listToPass = listOfPost.subList(start,end)
+                        LazyVerticalGrid(
+                            cells = GridCells.Fixed(2),
+                            horizontalArrangement = Arrangement.spacedBy(10.dp),
+                            verticalArrangement = Arrangement.SpaceEvenly,
+                            modifier = Modifier
+                                .fillMaxHeight()
+                                .fillMaxHeight()
+                        ) {
+                            items(listToPass) { post ->
+                                OnBoardingCardPost(post = post)
+                            }
                         }
                     }
                 }
             }
         }
-        
-        Row (modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 28.dp),horizontalArrangement = Arrangement.Center){
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 28.dp), horizontalArrangement = Arrangement.Center
+        ) {
             Text(
                 text = "Accède aux 500 bons plans qu'on te propose chaque mois",
                 color = Color.White,
@@ -91,7 +111,7 @@ fun OnBoardingMain(){
 
 @Preview(showBackground = true)
 @Composable
-fun OnBoardingMainPreview(){
+fun OnBoardingMainPreview() {
     PadsouTheme {
         OnBoardingMain()
     }

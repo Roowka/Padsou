@@ -30,7 +30,7 @@ fun AddPlan(navController: NavHostController){
         }
         Box(){
             Box(modifier = Modifier.padding(bottom = 40.dp)){
-                bodyAddPlan()
+                bodyAddPlan(navController)
             }
             Box(modifier = Modifier.align(Alignment.BottomEnd)){
                 footerAddPlan(navController = navController)
