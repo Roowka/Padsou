@@ -40,8 +40,8 @@ fun Profil(navController: NavHostController){
         Box(modifier = Modifier.padding(top = 40.dp)){
             headerProfil()
         }
-        Box(){
-            Box(modifier = Modifier.padding(bottom = 40.dp)){
+        Box(modifier = Modifier.fillMaxHeight()){
+            Box(modifier = Modifier.padding(top = 30.dp)){
                 bodyProfil(user)
             }
             Box(modifier = Modifier.align(Alignment.BottomEnd)){

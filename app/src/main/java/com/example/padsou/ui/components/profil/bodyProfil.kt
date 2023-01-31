@@ -51,7 +51,8 @@ fun bodyProfil(user: UserModel) {
         Column(
             modifier = Modifier
                 .background(WhiteBackground, shape = RoundedCornerShape(35.dp, 35.dp, 0.dp, 0.dp))
-                .padding(bottom = 50.dp)
+                .fillMaxHeight()
+                .padding(bottom = 20.dp)
         ) {
 
 
@@ -139,7 +140,7 @@ fun bodyProfil(user: UserModel) {
                         }
                         Row(
                             modifier = Modifier
-                                .padding(top = 35.dp)
+                                .padding(top = 100.dp)
                                 .padding(horizontal = 29.dp)
                         ) {
                             Btn_global(text = "ENREGISTRER", click = {})
