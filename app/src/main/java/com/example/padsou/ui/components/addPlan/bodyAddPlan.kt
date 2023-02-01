@@ -309,9 +309,10 @@ fun bodyAddPlan(navController: NavHostController) {
                                                 .addOnSuccessListener {
                                                     val posts =
                                                         PostModel(
+                                                            "",
                                                             titleState.text,
                                                             descriptionState.text,
-                                                            titleState.text.substring(0, 3),
+                                                            titleState.text.substring(0, 5),
                                                             linkState.text,
                                                             "https://firebasestorage.googleapis.com/v0/b/padsou-84958.appspot.com/o/images%2Fposts%2Flogo%2Fpadsou.png?alt=media&token=3d0b67bc-d423-4190-aaca-05ebffdfbaec"
                                                         )

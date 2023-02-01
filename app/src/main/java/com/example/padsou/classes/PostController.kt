@@ -21,7 +21,7 @@ class PostController : ViewModel() {
     private val _posts = MutableStateFlow<List<PostModel>>(listOf<PostModel>())
     val posts = _posts.asStateFlow()
 
-    private fun getPosts() {
+     fun getPosts() {
         val db = Firebase.firestore
 
         db.collection("posts").get()
