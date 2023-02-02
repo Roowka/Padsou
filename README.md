@@ -17,10 +17,20 @@ Côté gestion de projet, nous avons un depot Git ce qui nous a permis de bien s
 Nous avons aussi utilisé la convention Commit pour avoir des commit propre et lisible afin de ne pas se perdre dans le développement de l'application.
 Pour une bonne gestion de l'application, nous avons utilisé Google Analytics qui nous permet de suivre les activitées de l'application.
 
-## Le Lancement 
+## Comment lancer le projet
 
-Pour lancer notre application, nous avons pensé à faire de la pub dans les universitées, de lancer des partenariats avec les BDE 
-et de faire de la pubs sur les reseaux sociaux.
+Pour celà veuiller suivre ces étapes :
+
+Créer un dossier appeler Padsou puis ouvrer un terminal et aller dans le dossier précédement créer grâce à la commande cd
+
+Une fois dans le dossier, excécuter la commande suivante
+```
+git clone https://github.com/Roowka/Padsou.git
+```
+
+Ouvrez le projet avec Android studio et exécuter
+
+
 
 
 
