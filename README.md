@@ -28,7 +28,7 @@ Une fois dans le dossier, excécuter la commande suivante
 git clone https://github.com/Roowka/Padsou.git
 ```
 
-Ouvrez le projet avec Android studio et exécuter
+Ouvrez le projet avec Android studio et exécutez
 
 
 
