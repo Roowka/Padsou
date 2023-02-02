@@ -1,10 +1,7 @@
 package com.example.padsou.ui.components.home
 
 import android.util.Log
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -21,13 +18,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import coil.compose.rememberAsyncImagePainter
 import com.example.padsou.R
 import com.example.padsou.classes.PostController
 import com.example.padsou.models.PostModel
 
 @Composable
-fun HeadercardPost(post : PostModel){
+fun HeadercardPost(post : PostModel,navController: NavHostController){
     val postController = viewModel<PostController>()
     var uriPicture by remember {
         mutableStateOf("")
@@ -41,6 +39,7 @@ fun HeadercardPost(post : PostModel){
     Card(shape = RoundedCornerShape(10.dp),
         elevation = 0.dp,
         modifier = Modifier
+            .clickable { navController.navigate("post/".plus(post.id_post)) }
             .background(Color.Transparent)
             .width(159.dp)
             .height(162.dp)) {

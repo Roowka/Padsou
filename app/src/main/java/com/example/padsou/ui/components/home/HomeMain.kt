@@ -26,6 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import com.example.padsou.R
 import com.example.padsou.classes.CategoryController
 import com.example.padsou.classes.PostController
@@ -37,7 +38,7 @@ import kotlinx.coroutines.flow.collect
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun HomeMain() {
+fun HomeMain(navController: NavHostController) {
     val categoryController = viewModel<CategoryController>()
     val postController = viewModel<PostController>()
     val listCategories: List<CategoryModel> = categoryController.categories.collectAsState().value
@@ -91,17 +92,9 @@ fun HomeMain() {
             modifier = Modifier.padding(horizontal = 33.dp, vertical = 22.dp),
         ) {
             items(listOfPost) { post ->
-                HeadercardPost(post = post)
+                HeadercardPost(post = post, navController = navController)
             }
         }
 
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun HomeHeaderPreview() {
-    PadsouTheme() {
-        HomeMain()
     }
 }

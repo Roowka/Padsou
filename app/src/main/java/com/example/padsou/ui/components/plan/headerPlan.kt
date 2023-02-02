@@ -1,5 +1,6 @@
 package com.example.padsou.ui.components.plan
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -29,25 +30,30 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.rememberAsyncImagePainter
 
 @Composable
-fun headerPlan(titleText: String, descText: String, imageName: Int){
-    Column(modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(bottomStart = 25.dp, bottomEnd = 25.dp))) {
+fun headerPlan(titleText: String, descText: String, imageName: String){
+    Column(modifier = Modifier
+        .fillMaxWidth()
+        .clip(RoundedCornerShape(bottomStart = 25.dp, bottomEnd = 25.dp))) {
         Box(modifier = Modifier.height(240.dp)){
-            Image(painter = painterResource(id = imageName),
+            Image(painter = rememberAsyncImagePainter(model = imageName),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
-                modifier = Modifier.drawWithCache {
-                    val gradient = Brush.horizontalGradient(
-                        colors = listOf(Color.Transparent, Color.Black),
-                        startX = size.width,
-                        endX = -150.0F
-                    )
-                    onDrawWithContent {
-                        drawContent()
-                        drawRect(gradient,blendMode = BlendMode.Multiply)
+                modifier = Modifier
+                    .drawWithCache {
+                        val gradient = Brush.horizontalGradient(
+                            colors = listOf(Color.Transparent, Color.Black),
+                            startX = size.width,
+                            endX = -150.0F
+                        )
+                        onDrawWithContent {
+                            drawContent()
+                            drawRect(gradient, blendMode = BlendMode.Multiply)
+                        }
                     }
-                }.fillMaxWidth()
+                    .fillMaxWidth()
             )
             Box(modifier = Modifier.padding(start = 80.dp)){
                 Text(titleText, fontSize = 26.sp, fontFamily = FontFamily(Font(R.font.integralcf_regular)), color = Color.White, fontWeight = FontWeight.Bold, modifier = Modifier.padding(top = 100.dp))
@@ -62,6 +68,6 @@ fun headerPlan(titleText: String, descText: String, imageName: Int){
 @Composable
 fun headerPlanPreview() {
     PadsouTheme {
-        headerPlan("Titre ici", "Desc ici", R.drawable.tacos_border)
+        headerPlan("Titre ici", "Desc ici", "Test")
     }
 }

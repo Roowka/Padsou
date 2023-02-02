@@ -21,7 +21,7 @@ fun Home(navController: NavHostController) {
                     .fillMaxSize()
                     .background(Purple1)) {
                 HomeHeader()
-                HomeMain()
+                HomeMain(navController)
             }
         },
         bottomBar = { NavBar(navController)}
