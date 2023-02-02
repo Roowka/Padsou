@@ -9,6 +9,7 @@ L'objectif de notre application est de fournir des bons plans et des codes promo
 
 Côté technique, l'application a été développé avec Kotlin avec le logiciel Android Studio. 
 Pour la gestion de données, nous avons utilisé FireBase.
+Nous avons codé avec un compose_version un peu "viellot" (1.1.0-rc03), ce qui fais que nous avions pas accès à certaines fonctionnalités mais nous avons compensé avec des petites astuces.
 
 ## Gestion De Projet
 
