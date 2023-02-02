@@ -5,29 +5,22 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.material.TextFieldColors
-import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.sharp.Info
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.padsou.InputValidation.EmailState
-import com.example.padsou.InputValidation.PasswordState
-import com.example.padsou.InputValidation.TextFieldState
 import com.example.padsou.R
 import com.example.padsou.ui.theme.PadsouTheme
-import com.example.padsou.ui.theme.WhiteText
-import java.lang.Error
 
 @Composable
 fun Input_profil(
@@ -36,9 +29,11 @@ fun Input_profil(
     inputText: String,
     onValueChange: (String) -> Unit,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    visualTransformation: VisualTransformation = VisualTransformation.None
+    visualTransformation: VisualTransformation = VisualTransformation.None,
+    showPasswordIcon: Boolean = false
 ) {
     Column() {
+        val showPassword = remember { mutableStateOf(false) }
         TextField(
             value = value,
             onValueChange = { value -> onValueChange(value) },
@@ -63,7 +58,25 @@ fun Input_profil(
                 )
             },
             keyboardOptions = keyboardOptions,
-            visualTransformation = visualTransformation,
+            visualTransformation =
+            if (showPassword.value) {
+                VisualTransformation.None
+            } else {
+                visualTransformation
+            },
+            trailingIcon = {
+                if (showPasswordIcon) {
+                    if (showPassword.value) {
+                        IconButton(onClick = { showPassword.value = false }) {
+                            Icon(Icons.Filled.Lock, contentDescription = null)
+                        }
+                    } else {
+                        IconButton(onClick = { showPassword.value = true }) {
+                            Icon(Icons.Sharp.Info, contentDescription = null)
+                        }
+                    }
+                }
+            }
         )
 
         error?.let { ErrorFieldProfil(it) }
